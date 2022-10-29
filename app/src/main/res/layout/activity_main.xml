@@ -4,20 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aps.MainActivity">
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="65dp"
+        android:layout_width="236dp"
+        android:layout_height="80dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="423dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lista_preco"
+        app:layout_constraintStart_toStartOf="@+id/lista_preco"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/topo" />
 
@@ -28,60 +24,77 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="16dp" />
 
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="18dp"
+        android:text="Total: R$ 00,00"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/texto_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista_compra" />
+
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/texto_valor"
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="14dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Valor"
+        android:inputType="numberSigned|number|numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/texto_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/texto_item"
+        app:layout_constraintTop_toTopOf="@+id/texto_item" />
+
+    <EditText
+        android:id="@+id/texto_item"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="29dp"
         android:ems="10"
         android:hint="Item"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal3"
+        app:layout_constraintEnd_toStartOf="@+id/texto_valor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="496dp"
-        android:text="Total: R$ 55,00"
-        android:textSize="18dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="264dp" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal3"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:hint="Valor"
-        android:inputType="numberSigned|number|numberDecimal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPersonName2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/total" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="27dp"
+        android:onClick="salvaritem"
         android:text="Adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto_item" />
+
+    <ListView
+        android:id="@+id/lista_preco"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="30dp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@+id/lista_compra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lista_compra"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ListView
         android:id="@+id/lista_compra"
-        android:layout_width="409dp"
-        android:layout_height="372dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/total"
+        app:layout_constraintEnd_toStartOf="@+id/lista_preco"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 

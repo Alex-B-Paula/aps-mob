@@ -76,11 +76,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/texto_item" />
 
+    <Button
+        android:id="@+id/limpar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="27dp"
+        android:onClick="limpar"
+        android:text="Limpar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto_item"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ListView
         android:id="@+id/lista_preco"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="30dp"
+        android:scrollingCache="false"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="@+id/lista_compra"
         app:layout_constraintEnd_toEndOf="parent"

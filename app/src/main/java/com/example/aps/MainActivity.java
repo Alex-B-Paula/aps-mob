@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AbsListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         view_item = findViewById(R.id.lista_compra);
         view_valor = findViewById(R.id.lista_preco);
-
         total_texto = findViewById(R.id.total);
 
         texto_item = findViewById(R.id.texto_item);
@@ -113,6 +113,39 @@ public class MainActivity extends AppCompatActivity {
         view_valor.setAdapter(adapter_valores);
 
     }
+
+    public void limpar(View view){
+
+        listacomp.clear();
+        lista_item.clear();
+        lista_valores.clear();
+        total_valor = (float) 0;
+
+
+        total_texto.setText("Total: R$ 00,00");
+
+
+        //ArrayAdapter cria o adaptador do array.
+        ArrayAdapter<String> adapter_item = new ArrayAdapter<>(
+                getApplicationContext(),
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1, lista_item
+        );
+
+        ArrayAdapter<String> adapter_valores = new ArrayAdapter<>(
+                getApplicationContext(),
+                R.layout.simple_item_list_preco,
+                R.id.preco , lista_valores
+        );
+
+
+
+        //setAdapter faz aparecer na tela a lista.
+        view_item.setAdapter(adapter_item);
+        view_valor.setAdapter(adapter_valores);
+    }
+
+
 
 
 }

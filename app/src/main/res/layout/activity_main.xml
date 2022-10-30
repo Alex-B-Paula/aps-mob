@@ -9,12 +9,12 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="236dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/lista_preco"
-        app:layout_constraintStart_toStartOf="@+id/lista_preco"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lista_compra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/topo" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -29,25 +29,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="171dp"
         android:text="Total: R$ 00,00"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/texto_item"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_compra" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/texto_valor"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
         android:ems="10"
         android:hint="Valor"
         android:inputType="numberSigned|number|numberDecimal"
-        app:layout_constraintBottom_toBottomOf="@+id/texto_item"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/texto_item"
-        app:layout_constraintTop_toTopOf="@+id/texto_item" />
+        app:layout_constraintTop_toBottomOf="@+id/total" />
 
     <EditText
         android:id="@+id/texto_item"
@@ -55,14 +56,12 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="39dp"
-        android:layout_marginBottom="29dp"
         android:ems="10"
         android:hint="Item"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/texto_valor"
         app:layout_constraintEnd_toStartOf="@+id/texto_valor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/total" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
@@ -73,43 +72,27 @@
         android:onClick="salvaritem"
         android:text="Adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texto_item" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/limpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="23dp"
         android:onClick="limpar"
         android:text="Limpar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texto_item"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ListView
-        android:id="@+id/lista_preco"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="30dp"
-        android:scrollingCache="false"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="@+id/lista_compra"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lista_compra"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button" />
 
     <ListView
         android:id="@+id/lista_compra"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginBottom="25dp"
+        android:layout_height="420dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/total"
-        app:layout_constraintEnd_toStartOf="@+id/lista_preco"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

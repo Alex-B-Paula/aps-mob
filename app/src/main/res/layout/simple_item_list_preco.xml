@@ -18,9 +18,9 @@
     android:id="@+id/preco"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical|end"
+    android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:textAlignment="viewEnd"
+    android:textAlignment="gravity"
     android:textAppearance="?android:attr/textAppearanceListItemSmall" />

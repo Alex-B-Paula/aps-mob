@@ -19,7 +19,6 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     ListView view_item;
-    ListView view_valor;
     TextView total_texto;
     EditText texto_item;
     EditText valor_item;
@@ -30,14 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<ItemCompra> listacomp = new ArrayList<>();
 
-    ItemCompra item = new ItemCompra("Feijão" ,30);
-
-    private String[] itens = {
-            "Natan", "Daniel", "Taynara", "Alex"
-    };
-
     List<String> lista_item = new ArrayList<>();
-    List<String> lista_valores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         view_item = findViewById(R.id.lista_compra);
-        view_valor = findViewById(R.id.lista_preco);
         total_texto = findViewById(R.id.total);
 
         texto_item = findViewById(R.id.texto_item);
@@ -54,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         format.setMaximumFractionDigits(2);
         format.setCurrency(Currency.getInstance("BRL"));
-
 
 
     }
@@ -69,16 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         listacomp.add(novo_item);
         lista_item.clear();
-        lista_valores.clear();
         total_valor = (float) 0;
 
         for (ItemCompra item : listacomp) {
 
-            lista_item.add(item.getProduto());
-
             Float valor = item.getValor();
-            lista_valores.add(format.format(valor));
+            String texto = String.format(Locale.forLanguageTag("pt-BR"), "%s       R$ %s", item.getProduto(), format.format(valor));
 
+            lista_item.add(texto);
             total_valor = total_valor + valor;
 
         }
@@ -93,24 +81,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        //ArrayAdapter cria o adaptador do array.
         ArrayAdapter<String> adapter_item = new ArrayAdapter<>(
                 getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1, lista_item
         );
 
-        ArrayAdapter<String> adapter_valores = new ArrayAdapter<>(
-                getApplicationContext(),
-                R.layout.simple_item_list_preco,
-                R.id.preco , lista_valores
-        );
-
-
 
         //setAdapter faz aparecer na tela a lista.
         view_item.setAdapter(adapter_item);
-        view_valor.setAdapter(adapter_valores);
 
     }
 
@@ -118,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
         listacomp.clear();
         lista_item.clear();
-        lista_valores.clear();
         total_valor = (float) 0;
 
 
@@ -132,17 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 android.R.id.text1, lista_item
         );
 
-        ArrayAdapter<String> adapter_valores = new ArrayAdapter<>(
-                getApplicationContext(),
-                R.layout.simple_item_list_preco,
-                R.id.preco , lista_valores
-        );
-
-
 
         //setAdapter faz aparecer na tela a lista.
         view_item.setAdapter(adapter_item);
-        view_valor.setAdapter(adapter_valores);
     }
 
 

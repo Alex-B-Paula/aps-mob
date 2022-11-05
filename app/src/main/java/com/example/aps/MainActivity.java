@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AbsListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,39 +56,42 @@ public class MainActivity extends AppCompatActivity {
 
         ItemCompra novo_item = new ItemCompra(itemTexto ,valorTexto);
 
-        listacomp.add(novo_item);
-        lista_item.clear();
-        total_valor = (float) 0;
+        if ( !itemTexto.isEmpty() && valorTexto > 0) {
+            listacomp.add(novo_item);
+            lista_item.clear();
+            total_valor = (float) 0;
 
-        for (ItemCompra item : listacomp) {
+            for (ItemCompra item : listacomp) {
 
-            Float valor = item.getValor();
-            String texto = String.format(Locale.forLanguageTag("pt-BR"), "%s       R$ %s", item.getProduto(), format.format(valor));
+                Float valor = item.getValor();
+                String texto = String.format(Locale.forLanguageTag("pt-BR"), "%s        %s", item.getProduto(), format.format(valor));
 
-            lista_item.add(texto);
-            total_valor = total_valor + valor;
+                lista_item.add(texto);
+                total_valor = total_valor + valor;
 
+            }
+
+
+            if (total_valor > 0){
+
+                total_texto.setText(String.format(Locale.forLanguageTag("pt-BR"), "Total: R$ %.2f", total_valor));
+            }
+            else{
+                total_texto.setText("Total: R$ 00,00");
+            }
+
+
+            ArrayAdapter<String> adapter_item = new ArrayAdapter<>(
+                    getApplicationContext(),
+                    android.R.layout.simple_list_item_1,
+                    android.R.id.text1, lista_item
+            );
+
+
+            //setAdapter faz aparecer na tela a lista.
+            view_item.setAdapter(adapter_item);
         }
 
-
-        if (total_valor > 0){
-
-            total_texto.setText(String.format(Locale.forLanguageTag("pt-BR"), "Total: R$ %.2f", total_valor));
-        }
-        else{
-            total_texto.setText("Total: R$ 00,00");
-        }
-
-
-        ArrayAdapter<String> adapter_item = new ArrayAdapter<>(
-                getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1, lista_item
-        );
-
-
-        //setAdapter faz aparecer na tela a lista.
-        view_item.setAdapter(adapter_item);
 
     }
 
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         total_texto.setText("Total: R$ 00,00");
 
 
-        //ArrayAdapter cria o adaptador do array.
         ArrayAdapter<String> adapter_item = new ArrayAdapter<>(
                 getApplicationContext(),
                 android.R.layout.simple_list_item_1,
@@ -111,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        //setAdapter faz aparecer na tela a lista.
         view_item.setAdapter(adapter_item);
     }
 
